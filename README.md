@@ -38,6 +38,10 @@ Based on [Ethereum: Building Blockchain Decentralized Apps](https://www.linkedin
 - `truffle migrate <network_name>`: Migrate (deploy) our contract(s) to specified network. For our case, the network name is `ganache`.
 - Confirm the transaction on the Blockchain via Ganache UI.
 
+- Tests:
+    - JS files goes into `test` folder.
+    - Run tests with `truffle tests`
+
 
 
 
