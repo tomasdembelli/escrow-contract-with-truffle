@@ -10,7 +10,7 @@ contract ApprovalContract {
   // external: this function only visible externally
   // payable: this function can receive Ether together with a call
   function deposit(address payable _receiver) external payable {
-    require(msg.value > 9);
+    require(msg.value > 0);
     sender = msg.sender;
     receiver = _receiver;
   }
@@ -24,7 +24,9 @@ contract ApprovalContract {
     // ensure that this function is called by the approver (constant)
     require(msg.sender == approver);
     // this should be read as "transfer this (contract's) balance to the receiver"
-    receiver.transfer(address(this).balance);
+    // receiver.transfer(address(this).balance);
+    bool sent = receiver.send(address(this).balance);
+    require(sent, "Failed to send Ether");
   }
 
 }
