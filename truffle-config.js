@@ -23,6 +23,10 @@
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
+require('dotenv').config();
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+const { API_URL, MNEMONIC } = process.env;
+
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -46,6 +50,20 @@ module.exports = {
      port: 8545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
     },
+    ropsten: {
+      host: "127.0.0.1",     
+      port: 8545,            
+      network_id: 3, 
+      gas: 2900000,      
+    },
+    ropsten_alchemy: {
+      provider: function() {
+        return new HDWalletProvider(MNEMONIC, API_URL, 1)
+      },
+      network_id: 3,
+      gas: 4000000, //4M is the max
+      // from: 0x2b8Bbad1879Ef83E65F3b1793F6B86ADAEF3482C,
+    }
     // Another network with more advanced options... *** GANACHE ***
     // ganache: {
     //   host: "127.0.0.1",

@@ -5,7 +5,7 @@ contract ApprovalContract {
   // visible externally and internally 
   address public sender;
   address payable public receiver;
-  address public constant approver = 0xAa8A9823D2b9CFB3AD0E2209Ed5A02E0afFA4c54;
+  address public constant approver = 0x2b8Bbad1879Ef83E65F3b1793F6B86ADAEF3482C;
 
   // external: this function only visible externally
   // payable: this function can receive Ether together with a call
